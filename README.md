@@ -13,13 +13,17 @@ git clone https://github.com/donaldte/django-invoice.git
 
 Go to django-invoice directory
 
-`cd django-invoice`
+```
+cd django-invoice
+```
 
 # Step 3
 
 Create a virtual environment 
 
-`python3.9 -m venv venv`
+```
+python3.9 -m venv venv
+```
 
 # Step 4 
 
@@ -27,14 +31,20 @@ Activate a virtual environment
 
 Linux/mac user 
 
-`source venv/bin/activate`
+```
+source venv/bin/activate
+```
 
 Window user 
 
-`venv\Scripts\activate`
+```
+venv\Scripts\activate
+```
 
 # Step 5
 
 Install requirements 
 
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
