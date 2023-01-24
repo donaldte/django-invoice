@@ -5,6 +5,9 @@ from django.contrib import messages
 
 from django.db import transaction
 
+from .utils import pagination
+
+
 # Create your views here.
 
 class HomeView(View):
@@ -20,10 +23,18 @@ class HomeView(View):
 
     def get(self, request, *args, **kwags):
 
+        items = pagination(request, self.invoices)
+
+        self.context['invoices'] = items
+
         return render(request, self.templates_name, self.context)
 
 
     def post(self, request, *args, **kwagrs):
+
+        items = pagination(request, self.invoices)
+
+        self.context['invoices'] = items
 
         return render(request, self.templates_name, self.context)    
 
@@ -85,8 +96,6 @@ class AddInvoiceView(View):
 
     @transaction.atomic()
     def post(self, request, *args, **kwargs):
-
-        print(request.POST)
         
         items = []
 

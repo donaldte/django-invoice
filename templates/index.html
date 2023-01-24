@@ -56,7 +56,7 @@
                <img src="{% static 'images/icon-no.svg' %}" alt="False">
                {% endif %}
             </td>
-            <td>{{facture.invoice_type }}</td>
+            <td>{{facture.get_invoice_type_display }}</td>
             <td>
                <a href="" title="Detail" class="badge text-white bg-success">View</a>
 
@@ -73,6 +73,47 @@
          </tr>
 
          {% endfor %}
+
+         {% if invoices.has_other_pages %}
+
+         <div class="btn-group" role="group" aria-label="Item pagination">
+
+            {% if invoices.has_previous %}
+
+            <a href="?page={{ invoices.previous_page_number }}" class="btn btn-outline-primary">&laquo;</a>
+
+            {% endif %}
+
+            {% for page_number in invoices.paginator.page_range %}
+
+               {% if invoices.number == page_number %}
+
+                  <button class="btn btn-outline-primary active">
+                     <span> {{page_number}} <span class="sr-only">(current)</span></span>
+
+                  </button>
+
+                  {% else %}
+                     <a href="?page={{page_number}}" class="btn btn-outline-primary">
+                        {{ page_number }}
+                     </a>
+
+
+               {% endif %}   
+
+            {% endfor %}
+
+            {% if invoices.has_next %}
+
+               <a href="?page={{ invoices.next_page_number }}" class="btn btn-outline-primary">&laquo;</a>
+
+            {% endif %}
+
+
+
+         </div>
+
+         {% endif %}
 
          {% else %}
          
