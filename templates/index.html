@@ -193,32 +193,20 @@
 
 <br><br>
 
-<script type="text/javascript">
-   // donnees de modification 
-   $(document).on('click', '#btn-invoice-mod', function () {
-      let invoice_id = $(this).data('id');
-      let name = $(this).data('customer');
-      $('#id_modified').val(invoice_id);
-   })
 
-   // donner a supprimer 
-   $(document).on('click', '#btn-invoice-sup', function () {
-      let invoice_id = $(this).data('id');
-      let name = $(this).data('customer');
-      $('#id_supprimer').val(invoice_id);
-   })
+<script>
+
+   $(document).ready(function(){
+      $("#search").on("keyup", function(){
+         var value = $(this).val().toLowerCase();
+         $("#myTable tr").filter(function(){
+            $(this).toggle($(this).text().toLocaleLowerCase().indexOf(value)>-1)
+         });
+      });
+   });
 
 </script>
 
-<script>
-   $(document).ready(function(){
-     $("#search").on("keyup", function() {
-       var value = $(this).val().toLowerCase();
-       $("#myTable tr").filter(function() {
-         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-       });
-     });
-   });
-   </script>
+
 
 {% endblock %}
