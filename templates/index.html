@@ -62,12 +62,12 @@
 
                <button id="btn-invoice-sup" type="button" data-toggle="modal" data-target="#supprimer"
                   class="badge text-white bg-danger" title="Supprimer" data-id="{{ facture.pk }}"
-                  data-customer="{{facture.client.name}}">Delete
+                  data-customer="{{facture.customer.name}}">Delete
                </button>
 
                <button id="btn-invoice-mod" type="button" data-toggle="modal" title="Modifier" data-target="#modifier"
                   data-id="{{facture.pk}}" data-customer="{{facture.customer.name}}"
-                  class="badge text-dark bg-warning">'Modify
+                  class="badge text-dark bg-warning"> Modify
                </button>
             </td>
          </tr>
@@ -192,6 +192,30 @@
 <!-- end modal-->
 
 <br><br>
+
+<script type="text/javascript">
+
+   // modification
+
+   $(document).on('click', '#btn-invoice-mod', function(){
+      let invoice_id = $(this).data('id');
+      let customer = $(this).data('customer');
+      $('#id_modified').val(invoice_id);
+
+   })
+
+   // deleting of invoice
+
+   $(document).on('click', '#btn-invoice-sup', function(){
+      let invoice_id = $(this).data('id');
+      let customer = $(this).data('customer');
+      $('#id_supprimer').val(invoice_id);
+
+   })
+
+
+
+</script>
 
 
 <script>
