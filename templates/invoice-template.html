@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row gutters">
+    	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    		<div class="card">
+    			<div class="card-body p-0">
+    				<div class="invoice-container">
+    					<div class="invoice-header">
+    
+    						<!-- Row start -->
+    						<div class="row gutters">
+    							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+    								<div class="custom-actions-btns mb-5">
+    									<a href="" class="btn btn-primary">
+    										<i class="icon-download"></i> Download
+    									</a>
+    									<a href="#" class="btn btn-secondary">
+    										<i class="icon-printer"></i> Print
+    									</a>
+    								</div>
+    							</div>
+    						</div>
+    						<!-- Row end -->
+    
+    						<!-- Row start -->
+    						<div class="row gutters">
+    							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+    								<a href="donaldprogrammeur.com" class="invoice-logo">
+    									Donald Programmer
+    								</a>
+    							</div>
+    							<div class="col-lg-6 col-md-6 col-sm-6">
+    								<address class="text-right">
+    									Donald Programmer Inc, 45 NorthWest<br>
+    									Cameroon, Douala<br>
+    									00000 00000
+    								</address>
+    							</div>
+    						</div>
+    						<!-- Row end -->
+    
+    						<!-- Row start -->
+    						<div class="row gutters">
+    							<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+    								<div class="invoice-details">
+    									<address>
+    										{{obj.customer.name}}<br>
+    										{{obj.customer.address}}, {{obj.customer.city}}, Cameroon
+    									</address>
+    								</div>
+    							</div>
+    							<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+    								<div class="invoice-details">
+    									<div class="invoice-num">
+    										<div>{{obj.get_invoice_type_display}} - #00{{obj.id}}</div>
+    										<div>{{obj.invoice_date}}</div>
+    									</div>
+    								</div>													
+    							</div>
+    						</div>
+    						<!-- Row end -->
+    
+    					</div>
+    
+    					<div class="invoice-body">
+    
+    						<!-- Row start -->
+    						<div class="row gutters">
+    							<div class="col-lg-12 col-md-12 col-sm-12">
+    								<div class="table-responsive">
+    									<table class="table custom-table m-0">
+    										<thead>
+    											<tr>
+    												<th>Items</th>
+													<th>Product ID</th>
+													<th>Quantities</th>
+													<th>Unit Price</th>
+													<th>Subtotal</th>
+    											</tr>
+    										</thead>
+    										<tbody>
+                                              {% for article in articles %}  
+                                              
+    											<tr>
+
+                                                   
+
+                                                    <td>
+    													{{ article.name }}
+    													
+    												</td>
+
+													<td>
+    													{{ article.id }}
+    													
+    												</td>
+
+													<td>
+    													{{ article.quantite }}
+    													
+    												</td>
+
+													<td>
+    													{{ article.prix_u }}
+    													
+    												</td>
+
+													<td>
+    													{{ article.get_total }}
+    													
+    												</td>
+
+                                                    
+    												
+    											</tr>
+                                               {% endfor %} 
+    											
+    											
+    											<tr>
+    												<td>Comment: {{obj.comments}}</td>
+    												<td colspan="2">
+														<p>
+															Subtotal<br>
+															Shipment &amp; Handling<br>
+															Tax<br>
+														</p>
+    													<h5 class="text-success"><strong>Total</strong></h5>
+    												</td>			
+    												<td>
+    													<p>
+    														{{obj.get_total}} FCFA<br>
+    														00.00 FCFA<br>
+    														00.00 FCFA<br>
+    													</p>
+    													<h5 class="text-success"><strong>${{obj.get_total}} FCFA</strong></h5>
+    												</td>
+                                                    <td> 
+                                                            PAID:                    
+
+                                                        {% if obj.paid  %}
+
+                                                           <img class="icon" src="{% static 'images/icon-yes.svg' %}" alt="True">
+                                                        {% else %}
+                                                            <img class="icon" src="{% static 'images/icon-no.svg' %}" alt="False">
+   
+                                                        {% endif %}
+                                                    </td>
+    											</tr>
+    										</tbody>
+    									</table>
+    								</div>
+    							</div>
+    						</div>
+    						<!-- Row end -->
+    
+    					</div>
+    
+    					<div class="invoice-footer">
+    						Thank you for your purchase .
+    					</div>
+    
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
+
+{% endblock content %}

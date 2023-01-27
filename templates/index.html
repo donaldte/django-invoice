@@ -58,7 +58,7 @@
             </td>
             <td>{{facture.get_invoice_type_display }}</td>
             <td>
-               <a href="" title="Detail" class="badge text-white bg-success">View</a>
+               <a href="{% url 'view-invoice' pk=facture.pk %}" title="Detail" class="badge text-white bg-success">View</a>
 
                <button id="btn-invoice-sup" type="button" data-toggle="modal" data-target="#supprimer"
                   class="badge text-white bg-danger" title="Supprimer" data-id="{{ facture.pk }}"
