@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %} 
 
 
 
@@ -9,7 +10,7 @@
 
 <div class="row">
    <a href="{% url 'add-invoice' %}" class="btn col-md-4 btn-primary">
-      Register a new invoice <span class="badge text-bg-secondary"></span>
+      {% trans 'Register a new invoice' %} <span class="badge text-bg-secondary"></span>
    </a>
 
    <a href='#' class="col-md-4">
@@ -17,7 +18,7 @@
    </a>
 
    <a href="{% url 'add-customer' %}" class="btn col-md-4 btn-primary">
-        Register a new customer <span class="badge text-bg-secondary"></span>
+       {% trans ' Register a new customer' %} <span class="badge text-bg-secondary"></span>
    </a>
 
 </div>
@@ -58,16 +59,16 @@
             </td>
             <td>{{facture.get_invoice_type_display }}</td>
             <td>
-               <a href="{% url 'view-invoice' pk=facture.pk %}" title="Detail" class="badge text-white bg-success">View</a>
+               <a href="{% url 'view-invoice' pk=facture.pk %}" title="Detail" class="badge text-white bg-success">{% trans 'View' %}</a>
 
                <button id="btn-invoice-sup" type="button" data-toggle="modal" data-target="#supprimer"
                   class="badge text-white bg-danger" title="Supprimer" data-id="{{ facture.pk }}"
-                  data-customer="{{facture.customer.name}}">Delete
+                  data-customer="{{facture.customer.name}}">{% trans 'Delete' %}
                </button>
 
                <button id="btn-invoice-mod" type="button" data-toggle="modal" title="Modifier" data-target="#modifier"
                   data-id="{{facture.pk}}" data-customer="{{facture.customer.name}}"
-                  class="badge text-dark bg-warning"> Modify
+                  class="badge text-dark bg-warning"> {% trans 'Modify'  %}
                </button>
             </td>
          </tr>

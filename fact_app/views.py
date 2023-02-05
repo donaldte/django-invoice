@@ -21,6 +21,8 @@ from .utils import pagination, get_invoice
 
 from .decorators import *
 
+from django.utils.translation import gettext as _
+
 
 # Create your views here.
 
@@ -66,7 +68,7 @@ class HomeView(LoginRequiredSuperuserMixim, View):
 
                 obj.save() 
 
-                messages.success(request,  "Change made successfully.") 
+                messages.success(request,  _("Change made successfully.")) 
 
             except Exception as e:   
 
@@ -82,7 +84,7 @@ class HomeView(LoginRequiredSuperuserMixim, View):
 
                 obj.delete()
 
-                messages.success(request, "The deletion was successful.")   
+                messages.success(request, _("The deletion was successful."))   
 
             except Exception as e:
 
