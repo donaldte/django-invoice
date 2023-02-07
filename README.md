@@ -48,3 +48,11 @@ Install requirements
 ```
 pip install -r requirements.txt
 ```
+
+# Step 6
+
+Lancer le server local
+
+```
+python manage.py runserver 
+```
