@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 # Step 6
 
-Lancer le server local
+Lancer le serveur local
 
 ```
 python manage.py runserver 
