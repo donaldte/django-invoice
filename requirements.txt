@@ -1,3 +1,6 @@
 asgiref==3.6.0
 Django==4.1.5
+gunicorn==21.2.0
+packaging==23.2
+pdfkit==1.0.0
 sqlparse==0.4.3
