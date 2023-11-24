@@ -1,4 +1,4 @@
-# django-invoice
+# django-invoice system
 django-invoice system
 
 # Step 1
